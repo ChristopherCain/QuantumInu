@@ -8,3 +8,4 @@ langchain-core>=0.3
 langchain-chroma>=0.2
 langchain-huggingface>=0.1
 unstructured[pdf]>=0.16
+gunicorn>=23.0.0
