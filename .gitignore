@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.rag_chroma/
+flask_session/
+.pytest_cache/
