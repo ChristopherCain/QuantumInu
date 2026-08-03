@@ -78,8 +78,7 @@ Set `RAG_DEVELOPMENT_MODE=true` to log embedding, retrieval, prompt, and generat
 
 ## Screenshots
 
-_Add screenshots of the chat interface here._
-
+![Custom RAG Chatbot Interface](RAG_app_sketch.png)
 ## Technologies
 
 - Flask
