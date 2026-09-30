@@ -1,6 +1,90 @@
+# =========================
+# Python
+# =========================
 __pycache__/
 *.py[cod]
+*$py.class
+
+# =========================
+# Virtual Environment
+# =========================
 .venv/
+venv/
 .env
-flask_session/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Database
+# =========================
+*.db
+*.sqlite3
+
+# =========================
+# Build
+# =========================
+dist/
+build/
+
+# =========================
+# Cache
+# =========================
 .pytest_cache/
+.mypy_cache/
+.cache/
+
+# =========================
+# Runtime Data
+# =========================
+uploads/*
+!uploads/.gitkeep
+
+exports/*
+!exports/.gitkeep
+
+projects/*
+!projects/.gitkeep
+
+checkpoints/*
+!checkpoints/.gitkeep
+
+# Backend runtime data (config BASE_DIR = backend/)
+backend/uploads/
+backend/exports/
+backend/checkpoints/
+
+# =========================
+# Models
+# =========================
+*.pt
+*.onnx
+*.engine
+
+# =========================
+# Node
+# =========================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# =========================
+# Coverage
+# =========================
+.coverage
+htmlcov/
