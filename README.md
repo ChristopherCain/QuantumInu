@@ -38,12 +38,6 @@ The project intentionally separates implemented research components from planned
 
 ---
 
-## System profile
-
-<p align="center">
-  <img src="assets/system-profile.png" width="100%" alt="Quantum Inu system profile">
-</p>
-
 ## Authorization flow
 
 <p align="center">
