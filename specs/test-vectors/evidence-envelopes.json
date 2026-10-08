@@ -1,0 +1,14 @@
+[
+  {
+    "observer_id": "observer-a",
+    "observed_at_unix": 1760000000,
+    "sequence": 1,
+    "subject": "0x01"
+  },
+  {
+    "observer_id": "observer-a",
+    "observed_at_unix": 1760000010,
+    "sequence": 2,
+    "subject": "0x02"
+  }
+]

@@ -1,0 +1,9 @@
+[workspace]
+members = [
+  "crates/qinu-core",
+  "crates/qinu-policy",
+  "crates/qinu-evidence",
+  "crates/qinu-crypto",
+  "sdk/rust"
+]
+resolver = "2"

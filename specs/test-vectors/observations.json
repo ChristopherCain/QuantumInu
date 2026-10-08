@@ -1,0 +1,86 @@
+[
+  {
+    "name": "unexposed-low",
+    "observation": {
+      "subject": "0x01",
+      "chain": "ethereum",
+      "public_key_exposed": false,
+      "exposure_age_blocks": 0,
+      "value_at_risk_usd": 1000,
+      "signatures_per_day": 2,
+      "key_reuse_detected": false,
+      "replay_surface_present": false,
+      "signature_family": "secp256k1",
+      "pq_authorization_available": false,
+      "hybrid_authorization_available": false,
+      "chain_upgrade_latency_days": 30
+    },
+    "expected": {
+      "urgency": "low",
+      "action": "monitor"
+    }
+  },
+  {
+    "name": "exposed-medium",
+    "observation": {
+      "subject": "0x02",
+      "chain": "ethereum",
+      "public_key_exposed": true,
+      "exposure_age_blocks": 1000,
+      "value_at_risk_usd": 120000,
+      "signatures_per_day": 20,
+      "key_reuse_detected": false,
+      "replay_surface_present": false,
+      "signature_family": "secp256k1",
+      "pq_authorization_available": false,
+      "hybrid_authorization_available": false,
+      "chain_upgrade_latency_days": 30
+    },
+    "expected": {
+      "urgency": "medium",
+      "action": "prepare-migration"
+    }
+  },
+  {
+    "name": "critical-reused",
+    "observation": {
+      "subject": "0x03",
+      "chain": "bitcoin",
+      "public_key_exposed": true,
+      "exposure_age_blocks": 400000,
+      "value_at_risk_usd": 5000000,
+      "signatures_per_day": 5000,
+      "key_reuse_detected": true,
+      "replay_surface_present": true,
+      "signature_family": "secp256k1",
+      "pq_authorization_available": false,
+      "hybrid_authorization_available": false,
+      "chain_upgrade_latency_days": 1000
+    },
+    "expected": {
+      "urgency": "critical",
+      "action": "isolate-and-migrate"
+    }
+  },
+  {
+    "name": "pq-credit",
+    "observation": {
+      "subject": "0x04",
+      "chain": "ethereum",
+      "public_key_exposed": true,
+      "exposure_age_blocks": 100000,
+      "value_at_risk_usd": 300000,
+      "signatures_per_day": 200,
+      "key_reuse_detected": false,
+      "replay_surface_present": false,
+      "signature_family": "secp256k1",
+      "pq_authorization_available": true,
+      "hybrid_authorization_available": true,
+      "chain_upgrade_latency_days": 20
+    },
+    "expected": {
+      "urgency": "medium",
+      "action": "prepare-migration"
+    }
+  }
+]

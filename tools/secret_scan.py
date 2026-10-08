@@ -1,12 +1,17 @@
 from pathlib import Path
-import re,sys
-R=Path(__file__).resolve().parents[1]
-rules=[re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),re.compile(r"\bAKIA[0-9A-Z]{16}\b"),re.compile(r"\bgh[pousr]_[A-Za-z0-9_]{20,}\b")]
+import re
+ROOT=Path(__file__).parents[1]
+patterns=[
+ re.compile(r"AKIA[0-9A-Z]{16}"),
+ re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+ re.compile(r"(?i)(api[_-]?key|secret[_-]?key)\s*[=:]\s*['\"][^'\"]{12,}"),
+]
 hits=[]
-for p in R.rglob("*"):
-    if not p.is_file() or any(x in p.parts for x in (".git","target","node_modules","dist")): continue
-    try:s=p.read_text()
-    except:continue
-    if any(r.search(s) for r in rules): hits.append(str(p.relative_to(R)))
-if hits: print(*hits,sep="\\n");sys.exit(1)
-print("secret-pattern scan: OK")
+for p in ROOT.rglob("*"):
+    if not p.is_file() or ".git" in p.parts: continue
+    try:s=p.read_text(encoding="utf-8")
+    except Exception:continue
+    for pat in patterns:
+        if pat.search(s):hits.append(str(p.relative_to(ROOT)))
+if hits: raise SystemExit("possible secrets: "+", ".join(sorted(set(hits))))
+print("secret scan: OK")

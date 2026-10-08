@@ -1,8 +1,9 @@
 # Changelog
-## 0.1.0
-- migration policy core
-- threat sentinel
-- Python / TypeScript SDKs
-- Solidity migration registry
-- multilingual docs
-- CI and repository checks
+
+## Unreleased
+- Added canonical risk-score model.
+- Added evidence envelopes and capability negotiation.
+- Added Ethereum migration, evidence and capability registries.
+- Added cross-language test vectors and conformance tools.
+- Added observer and migration coordinator services.
+- Added fuzz/invariant-oriented Solidity tests.

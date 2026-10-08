@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Quantum Inu Observation",
+  "type": "object",
+  "required": [
+    "subject",
+    "chain",
+    "public_key_exposed",
+    "exposure_age_blocks",
+    "value_at_risk_usd",
+    "signatures_per_day",
+    "key_reuse_detected",
+    "replay_surface_present",
+    "signature_family",
+    "pq_authorization_available",
+    "hybrid_authorization_available",
+    "chain_upgrade_latency_days"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "public_key_exposed": {
+      "type": "boolean"
+    },
+    "exposure_age_blocks": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "value_at_risk_usd": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "signatures_per_day": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "key_reuse_detected": {
+      "type": "boolean"
+    },
+    "replay_surface_present": {
+      "type": "boolean"
+    },
+    "signature_family": {
+      "enum": [
+        "secp256k1",
+        "ed25519",
+        "wots-k256",
+        "ml-dsa",
+        "slh-dsa",
+        "unknown"
+      ]
+    },
+    "pq_authorization_available": {
+      "type": "boolean"
+    },
+    "hybrid_authorization_available": {
+      "type": "boolean"
+    },
+    "chain_upgrade_latency_days": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

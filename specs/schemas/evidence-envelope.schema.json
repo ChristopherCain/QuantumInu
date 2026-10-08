@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence Envelope",
+  "type": "object",
+  "required": [
+    "observer_id",
+    "observed_at_unix",
+    "sequence",
+    "observation"
+  ],
+  "properties": {
+    "observer_id": {
+      "type": "string"
+    },
+    "observed_at_unix": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "observation": {
+      "$ref": "observation.schema.json"
+    }
+  }
+}

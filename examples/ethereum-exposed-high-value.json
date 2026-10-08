@@ -1,0 +1,14 @@
+{
+  "subject": "0x111",
+  "chain": "ethereum",
+  "public_key_exposed": true,
+  "exposure_age_blocks": 200000,
+  "value_at_risk_usd": 2500000,
+  "signatures_per_day": 900,
+  "key_reuse_detected": false,
+  "replay_surface_present": true,
+  "signature_family": "secp256k1",
+  "pq_authorization_available": false,
+  "hybrid_authorization_available": true,
+  "chain_upgrade_latency_days": 120
+}

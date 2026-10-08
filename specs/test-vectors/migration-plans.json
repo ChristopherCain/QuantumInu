@@ -1,0 +1,17 @@
+[
+  {
+    "chain": "ethereum",
+    "requires_consensus_upgrade": false,
+    "preferred": "account-migration"
+  },
+  {
+    "chain": "bitcoin",
+    "requires_consensus_upgrade": true,
+    "preferred": "script-and-consensus-research"
+  },
+  {
+    "chain": "solana",
+    "requires_consensus_upgrade": true,
+    "preferred": "authority-and-consensus-research"
+  }
+]

@@ -1,12 +1,10 @@
 # Contributing
-PRs should be reviewable and test-backed.
 
-Run:
-```bash
-python -m unittest discover sdk/python/tests
-python tools/repo_invariants.py
-cargo test --manifest-path crates/qinu-core/Cargo.toml
-cd services/threat-sentinel && go test ./...
-```
+Changes to canonical policy behavior require:
+1. a specification update;
+2. shared test-vector updates;
+3. Rust, Go, Python and TypeScript conformance;
+4. tests for reason-code ordering;
+5. changelog entry for externally visible behavior.
 
-Use real authorship and real commit history. Do not manufacture dates, contributors, stars, or activity.
+Cryptographic changes must document assumptions and should use reviewed implementations.

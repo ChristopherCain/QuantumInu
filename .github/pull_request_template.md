@@ -1,6 +1,10 @@
 ## Summary
 ## Security impact
-## Verification
-- [ ] tests
-- [ ] docs
-- [ ] no secrets
+## Protocol / vector changes
+## Tests
+- [ ] Rust
+- [ ] Go
+- [ ] Python
+- [ ] TypeScript
+- [ ] Solidity
+- [ ] shared vectors

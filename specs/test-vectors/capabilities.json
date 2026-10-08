@@ -1,0 +1,25 @@
+[
+  {
+    "a": {
+      "wots_k256": true,
+      "ml_dsa": true,
+      "slh_dsa": false,
+      "hybrid_auth": true,
+      "account_rotation": true
+    },
+    "b": {
+      "wots_k256": true,
+      "ml_dsa": false,
+      "slh_dsa": true,
+      "hybrid_auth": true,
+      "account_rotation": false
+    },
+    "intersection": {
+      "wots_k256": true,
+      "ml_dsa": false,
+      "slh_dsa": false,
+      "hybrid_auth": true,
+      "account_rotation": false
+    }
+  }
+]

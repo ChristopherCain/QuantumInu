@@ -1,0 +1,8 @@
+[package]
+name = "qinu-policy"
+version = "0.2.0"
+edition = "2021"
+
+[dependencies]
+qinu-core = { path = "../qinu-core" }
+

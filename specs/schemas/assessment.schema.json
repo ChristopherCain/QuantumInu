@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Quantum Inu Assessment",
+  "type": "object",
+  "required": [
+    "score",
+    "urgency",
+    "action",
+    "reasons"
+  ],
+  "properties": {
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "urgency": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "action": {
+      "enum": [
+        "monitor",
+        "prepare-migration",
+        "migrate",
+        "isolate-and-migrate"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

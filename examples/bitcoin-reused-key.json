@@ -1,0 +1,14 @@
+{
+  "subject": "bc1qexample",
+  "chain": "bitcoin",
+  "public_key_exposed": true,
+  "exposure_age_blocks": 700000,
+  "value_at_risk_usd": 900000,
+  "signatures_per_day": 12,
+  "key_reuse_detected": true,
+  "replay_surface_present": false,
+  "signature_family": "secp256k1",
+  "pq_authorization_available": false,
+  "hybrid_authorization_available": false,
+  "chain_upgrade_latency_days": 1200
+}

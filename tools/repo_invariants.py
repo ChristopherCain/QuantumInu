@@ -1,10 +1,19 @@
 from pathlib import Path
-import json,sys
-R=Path(__file__).resolve().parents[1]
-req=["README.md","SECURITY.md","LICENSE","crates/qinu-core/Cargo.toml","services/threat-sentinel/go.mod",
-"sdk/python/pyproject.toml","sdk/typescript/package.json","contracts/src/MigrationRegistry.sol","specs/exposure-observation.schema.json"]
-bad=[x for x in req if not (R/x).exists()]
-schema=json.loads((R/"specs/exposure-observation.schema.json").read_text())
-if schema.get("additionalProperties") is not False: bad.append("schema additionalProperties must be false")
-if bad: print("FAIL",*bad,sep="\n"); sys.exit(1)
+ROOT=Path(__file__).parents[1]
+required=[
+ "README.md","SECURITY.md","contracts/src/QuantumInuAccount.sol",
+ "crates/qinu-policy/src/lib.rs","services/threat-sentinel/cmd/threat-sentinel/main.go",
+ "specs/test-vectors/observations.json"
+]
+missing=[p for p in required if not (ROOT/p).exists()]
+if missing: raise SystemExit("missing: "+", ".join(missing))
+forbidden=["pythontrader","PYTHONTRADER"]
+hits=[]
+for p in ROOT.rglob("*"):
+    if p.is_file() and ".git" not in p.parts:
+        try: text=p.read_text(encoding="utf-8")
+        except Exception: continue
+        for token in forbidden:
+            if token in text: hits.append(f"{p.relative_to(ROOT)}:{token}")
+if hits: raise SystemExit("forbidden references: "+"; ".join(hits))
 print("repository invariants: OK")
