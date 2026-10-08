@@ -35,7 +35,20 @@ The project intentionally separates implemented research components from planned
 
 > **Status:** research / pre-audit. Do not treat this repository as production-ready cryptographic infrastructure.
 
+
 ---
+
+## System profile
+
+<p align="center">
+  <img src="assets/system-profile.png" width="100%" alt="Quantum Inu system profile">
+</p>
+
+## Authorization flow
+
+<p align="center">
+  <img src="assets/fig1-sequence.png" width="100%" alt="Quantum Inu authorization sequence">
+</p>
 
 ## System architecture
 
@@ -190,6 +203,10 @@ HYBRID_AUTH_AVAILABLE
 
 ## Ethereum authorization research
 
+<p align="center">
+  <img src="assets/fig2-signature.png" width="100%" alt="WOTS+ signature anatomy">
+</p>
+
 The Solidity layer contains:
 
 - `QuantumInuAccount.sol`
@@ -205,6 +222,19 @@ The account-level design is intentionally scoped. A post-quantum smart account d
 > **Account-level post-quantum authorization ≠ consensus-layer migration.**
 
 ---
+
+
+## Verification cost
+
+<p align="center">
+  <img src="assets/fig3-gas.png" width="100%" alt="Gas cost versus verifier hash work">
+</p>
+
+## Signature and public-key size
+
+<p align="center">
+  <img src="assets/fig4-sizes.png" width="100%" alt="Signature and public-key size comparison">
+</p>
 
 ## Cross-language conformance
 
