@@ -1,90 +1,123 @@
-# Garden RAG
+<p align="center"><img src="docs/assets/quantum-inu.png" width="220" alt="Quantum Inu"></p>
 
-A local, PDF-focused Retrieval-Augmented Generation application for querying gardening and pesticide manuals. It uses LangChain and ChromaDB to retrieve relevant document chunks, then Qwen 2.5 0.5B Instruct to generate grounded answers with source citations.
+# Quantum Inu
+**The Universal Post-Quantum Security Layer for Crypto**
 
-## Features
+Quantum Inu is an Ethereum-native, multichain **research implementation** for cryptographic migration, exposed-key monitoring, algorithm agility, and chain-specific authorization adapters.
 
-- Multi-PDF ingestion and title-aware chunking with Unstructured
-- Persistent ChromaDB vector database
-- Hugging Face embeddings and Qwen 2.5 0.5B Instruct generation
-- Session-based chat history with retrieved source citations
-- Flask web interface with responsive source cards
-- Application-lifetime model, embedding, Chroma, and retriever singletons
-- Streaming token responses and optional stage-level performance logging
+> Status: research / pre-audit. This repository does not claim that Ethereum, Bitcoin, Solana, or any other chain is already quantum-resistant end-to-end.
 
-## Folder structure
+## Architecture
 
 ```text
-.
-├── app.py
-├── chat_store.py
-├── config.py
-├── rag.py
-├── vectorize.py
-├── requirements.txt
-├── static/
-│   ├── css/style.css
-│   ├── js/app.js
-│   └── images/
-├── templates/index.html
-├── data/
-└── .rag_chroma/
+                    qinu-core (Rust)
+              capability + migration policy
+                         |
+          +--------------+--------------+
+          |              |              |
+      Ethereum        Bitcoin        Solana
+      adapter          policy         policy
+          |              |              |
+          +------- Threat Sentinel ------+
+                    (Go service)
+                         |
+               SDKs + evidence schema
+               TypeScript / Python
 ```
 
-## Installation
+## Components
 
-Use Python 3.12 or later. Create and activate a virtual environment:
+| Component | Language | Purpose |
+|---|---|---|
+| `crates/qinu-core` | Rust | deterministic capability registry + migration policy |
+| `services/threat-sentinel` | Go | normalized exposed-key risk analysis |
+| `sdk/typescript` | TypeScript | typed client + planner |
+| `sdk/python` | Python | migration planner + scripting SDK |
+| `contracts` | Solidity | account-level migration metadata registry |
+| `specs` | JSON/Markdown | portable observation and evidence formats |
+| `docs` | EN/RU/ZH | architecture, threat model, chain boundaries |
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+## Core model
+
+Quantum Inu separates five concerns:
+
+1. **Observe** public-key exposure and authorization state.
+2. **Classify** urgency with deterministic reason codes.
+3. **Negotiate** classical / hybrid / post-quantum capabilities.
+4. **Migrate** through a chain-specific adapter.
+5. **Verify** observations with signed evidence envelopes.
+
+Supported algorithm identifiers include `ML-KEM`, `ML-DSA`, `SLH-DSA`, `ECDSA-SECP256K1`, `ED25519`, and hybrid authorization suites.
+
+Cryptographic primitives are intentionally delegated to audited implementations; this repository does not implement ML-KEM/ML-DSA/SLH-DSA from scratch.
+
+## Example decision
+
+```json
+{
+  "chain": "bitcoin",
+  "subject": "bc1q...",
+  "public_key_exposed": true,
+  "signature_family": "ecdsa-secp256k1",
+  "high_frequency": true,
+  "pq_authorization_available": false
+}
 ```
 
-Install the project dependencies:
+Result:
 
-```powershell
-pip install -r requirements.txt
+```text
+urgency  HIGH
+action   ROTATE_TO_UNEXPOSED_SCRIPT
+reason   PUBLIC_KEY_EXPOSED, HIGH_SPEND_FREQUENCY
 ```
 
-For production deployments, set a stable Flask secret key before starting the server:
+## Quick verification
 
-```powershell
-$env:FLASK_SECRET_KEY = "replace-with-a-long-random-secret"
+```bash
+python -m unittest discover sdk/python/tests
+python tools/repo_invariants.py
+python tools/secret_scan.py
+
+cargo test --manifest-path crates/qinu-core/Cargo.toml
+
+cd services/threat-sentinel
+go test ./...
 ```
 
-## Build the vector database
+## What is implemented
 
-Place PDF manuals in `data/`, then build the local index:
+- deterministic migration policy engine;
+- algorithm capability registry;
+- public-key exposure schema;
+- Go threat sentinel;
+- Python and TypeScript planners;
+- Solidity migration-state registry;
+- multilingual documentation;
+- CI, security policy, invariant and secret-pattern checks.
 
-```powershell
-python vectorize.py
-```
+## Integration boundaries
 
-To replace the existing index after changing the PDFs:
+**Ethereum:** account-level smart-account / authorization migration is possible; consensus-wide signature migration requires protocol support.
 
-```powershell
-python vectorize.py --rebuild
-```
+**Bitcoin:** adapters can reason about key exposure and rotation; post-quantum consensus signatures require a network upgrade.
 
-## Run the application
+**Solana:** adapters can coordinate program/account authority migration; network-wide Ed25519 replacement is protocol-level.
 
-```powershell
-python app.py
-```
+## Security
 
-Open `http://127.0.0.1:5000` in a browser.
+Read [`SECURITY.md`](SECURITY.md) and [`docs/security/THREAT_MODEL.md`](docs/security/THREAT_MODEL.md).
 
-Set `RAG_DEVELOPMENT_MODE=true` to log embedding, retrieval, prompt, and generation timing for each response.
+## Roadmap
 
-## Screenshots
+- audited PQ provider adapters;
+- hybrid EIP-4337 authorization module;
+- Bitcoin exposure indexer;
+- Solana authority migration adapter;
+- multi-observer evidence verification;
+- reproducible benchmark corpus;
+- external review.
 
-![Custom RAG Chatbot Interface](RAG_app_sketch.png)
-## Technologies
+## License
 
-- Flask
-- LangChain
-- ChromaDB
-- Hugging Face Transformers
-- Qwen 2.5 0.5B Instruct
-- Sentence Transformers
-- Unstructured
+MIT.

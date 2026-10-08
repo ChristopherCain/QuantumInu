@@ -1,0 +1,19 @@
+{
+  "enabled_asset_classes": [
+    "equity",
+    "etf",
+    "fx",
+    "crypto",
+    "memecoin",
+    "perp",
+    "future",
+    "index",
+    "commodity"
+  ],
+  "scan_interval_ms": 250,
+  "max_parallel_feeds": 32,
+  "brain": {
+    "consensus_threshold": 0.08,
+    "min_confidence": 0.5
+  }
+}

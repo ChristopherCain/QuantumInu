@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /crates/qinu-core
+    schedule: { interval: weekly }
+  - package-ecosystem: gomod
+    directory: /services/threat-sentinel
+    schedule: { interval: weekly }
+  - package-ecosystem: npm
+    directory: /sdk/typescript
+    schedule: { interval: weekly }

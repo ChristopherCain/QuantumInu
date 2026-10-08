@@ -1,0 +1,9 @@
+{
+  "chain": "bitcoin",
+  "subject": "bc1qexample",
+  "public_key_exposed": true,
+  "signature_family": "ecdsa-secp256k1",
+  "high_frequency": true,
+  "high_value": false,
+  "pq_authorization_available": false
+}

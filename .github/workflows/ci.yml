@@ -1,0 +1,29 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy: { matrix: { python: ["3.10","3.11","3.12","3.13"] } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "${{ matrix.python }}" }
+      - run: python -m unittest discover sdk/python/tests
+      - run: python tools/repo_invariants.py
+      - run: python tools/secret_scan.py
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --manifest-path crates/qinu-core/Cargo.toml
+  go:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: services/threat-sentinel } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.23.x" }
+      - run: go test ./...

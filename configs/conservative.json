@@ -1,0 +1,8 @@
+{
+  "starting_cash": 1000000,
+  "max_gross_exposure": 750000,
+  "max_symbol_exposure": 75000,
+  "max_order_notional": 20000,
+  "max_daily_loss": 15000,
+  "mode": "simulation"
+}
